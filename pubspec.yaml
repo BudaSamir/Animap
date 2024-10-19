@@ -1,0 +1,92 @@
+name: animap_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  #====================================== Core ==========================================
+  connectivity_plus: ^6.0.3
+  flutter_dotenv: ^5.1.0
+  flutter_screenutil: ^5.9.3
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^9.2.2
+  flutter_localization: ^0.2.0
+  flutter_svg: ^2.0.10+1
+  flutter_bloc: ^8.1.6
+  get_it: ^8.0.0
+  dartz:
+  freezed_annotation: ^2.4.1
+  equatable: ^2.0.5
+  iconsax: ^0.0.8
+  path_provider: ^2.1.4
+  file_picker: ^8.1.2
+  mime: ^1.0.6
+  fluttertoast: ^8.2.8
+  image_picker: ^1.1.2
+  #===================================== API =============================================
+  dio: ^5.4.3+1
+  pretty_dio_logger: ^1.3.1
+  retrofit: ^4.1.0
+  json_annotation: ^4.9.0
+  #===================================== FireBase ========================================
+#  firebase_core:
+#  firebase_auth:
+#  firebase_database:
+#  cloud_firestore:
+  #===================================== Hive ============================================
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  #core
+  very_good_analysis: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+  # dart run build_runner build --delete-conflicting-outputs
+  build_runner: ^2.4.9
+  freezed: ^2.5.2
+  retrofit_generator: ^9.1.2
+  json_serializable: ^6.8.0
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env.dev
+    - .env.stg
+    - .env.prod
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
+    - assets/lang/en.json
+    - assets/lang/ar.json
+
+  fonts:
+    # Arabic Font
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/arabic/cairo/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/arabic/cairo/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/arabic/cairo/Cairo-Regular.ttf
+          weight: 400
+    # English Font
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/english/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/english/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/english/poppins/Poppins-Regular.ttf
+          weight: 400
+
