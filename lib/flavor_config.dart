@@ -12,7 +12,7 @@ class FlavorsValues {
   late String _appID;
   late String _bundleID;
   late String _baseURL;
-  late String _apiURL;
+  // late String _apiURL;
   late String _notifURL;
   late String _sentryURL;
   late String _dynamicLinkURL;
@@ -42,7 +42,7 @@ class FlavorConfig extends FlavorsValues {
     _appID = dotenv.get('APP_ID');
     _bundleID = dotenv.get('BUNDLE_ID');
     _baseURL = dotenv.get('BASE_URL');
-    _apiURL = dotenv.get('API_URL');
+    // _apiURL = dotenv.get('API_URL');
     _notifURL = dotenv.get('NOTIF_URL');
     _sentryURL = dotenv.get('SENTRY_URL');
     _dynamicLinkURL = dotenv.get('DYNAMIC_LINK_URL');
@@ -50,7 +50,7 @@ class FlavorConfig extends FlavorsValues {
     ///=========================================================================
 
     debugPrint('ENV_TYPE= $_envType \nAPP_ID= $_appID \nBUNDLE_ID= $_bundleID'
-        '\nBASE_URL= $_baseURL \nAPI_URL= $_apiURL \nNOTIF_URL= $_notifURL'
+        '\nBASE_URL= $_baseURL \n/*API_URL=  \nNOTIF_URL= $_notifURL'
         '\nSENTRY_URL= $_sentryURL \nDYNAMIC_LINK_URL= $_dynamicLinkURL'
         '\n${'=' * 35}');
   }
@@ -60,7 +60,7 @@ class FlavorConfig extends FlavorsValues {
   String get appID => _appID;
   String get bundleID => _bundleID;
   String get baseURL => _baseURL;
-  String get apiURL => _apiURL;
+  // String get apiURL => _apiURL;
   String get notifURL => _notifURL;
   String get sentryURL => _sentryURL;
   String get dynamicLinkURL => _dynamicLinkURL;

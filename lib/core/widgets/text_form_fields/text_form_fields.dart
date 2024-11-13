@@ -1,14 +1,17 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:animap_app/core/utils/constants/app_colors.dart';
+import 'package:animap_app/core/widgets/text_form_fields/phone_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-import '/core/extensions/settings_helper.dart';
 import '../../extensions/media_query_helper.dart';
 import '../../widgets/text_form_fields/text_form_field.dart';
 import '../texts/custom_text.dart';
 
 class TextFormFields extends StatelessWidget {
   bool title;
+  bool phone;
   final int fieldCount;
   final Axis scrollDirection;
   List<String>? titleText;
@@ -24,6 +27,7 @@ class TextFormFields extends StatelessWidget {
   List<dynamic Function(String)?>? onChangedList;
   List<dynamic Function()?>? onEditingCompleteList;
   List<dynamic Function(String)?>? onFieldSubmittedList;
+  Function(PhoneNumber)? onChangedPhoneNumber;
   List<Widget?>? prefixIcon;
   List<Widget?>? suffixIcon;
   double spaceBetweenFields;
@@ -33,6 +37,7 @@ class TextFormFields extends StatelessWidget {
   TextFormFields(
       {super.key,
       required this.title,
+      required this.phone,
       required this.fieldCount,
       this.titleText,
       this.hintTexts,
@@ -46,6 +51,7 @@ class TextFormFields extends StatelessWidget {
       this.onChangedList,
       this.onEditingCompleteList,
       this.onFieldSubmittedList,
+      this.onChangedPhoneNumber,
       this.obscureTextList,
       this.prefixIcon,
       this.suffixIcon,
@@ -75,23 +81,41 @@ class TextFormFields extends StatelessWidget {
                 ),
 
               /// ================= Text Form Field ====================
-              CustomTextFormField(
-                width: widths?[index],
-                height: heights?[index],
-                controller: controllerList?[index],
-                focusNode: focusNodeList?[index],
-                validator: validatorList?[index],
-                onTap: onTapList?[index],
-                onChanged: onChangedList?[index],
-                onEditingComplete: onEditingCompleteList?[index],
-                onFieldSubmitted: onFieldSubmittedList?[index],
-                fillColor: context.color.background,
-                hintText: titleText?[index],
-                prefixIcon: prefixIcon?[index],
-                suffixIcon: suffixIcon?[index],
-                obscureText: obscureTextList?[index],
-                maxLines: maxLines?[index],
-              ),
+              if (phone && index != fieldCount - 1)
+                CustomTextFormField(
+                  width: widths?[index],
+                  height: heights?[index],
+                  controller: controllerList?[index],
+                  focusNode: focusNodeList?[index],
+                  validator: validatorList?[index],
+                  onTap: onTapList?[index],
+                  onChanged: onChangedList?[index],
+                  onEditingComplete: onEditingCompleteList?[index],
+                  onFieldSubmitted: onFieldSubmittedList?[index],
+                  fillColor: AppColors.white,
+                  hintText: hintTexts?[index],
+                  prefixIcon: prefixIcon?[index],
+                  suffixIcon: suffixIcon?[index],
+                  obscureText: obscureTextList?[index],
+                  maxLines: maxLines?[index],
+                ),
+
+              /// ================= Phone Form Field ====================
+              if (phone && index == fieldCount - 1)
+                PhoneFormField(
+                  width: widths?[index],
+                  height: heights?[index],
+                  controller: controllerList?[index],
+                  focusNode: focusNodeList?[index],
+                  validator: validatorList?[index],
+                  onChanged: onChangedPhoneNumber,
+                  onEditingComplete: onEditingCompleteList?[index],
+                  onFieldSubmitted: onFieldSubmittedList?[index],
+                  fillColor: AppColors.white,
+                  hintText: hintTexts?[index],
+                  prefixIcon: prefixIcon?[index],
+                  suffixIcon: suffixIcon?[index],
+                ),
             ],
           ),
         ),

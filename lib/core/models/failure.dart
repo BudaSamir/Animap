@@ -11,7 +11,6 @@ class Failure extends Equatable {
   const Failure({this.statusCode, this.statusMessage, this.status});
 
   factory Failure.fromJson(Map<String, dynamic> json) {
-    print("Failure => json => $json");
     return Failure(
       statusCode: json[NetworkConstants.statusCode],
       status: json[NetworkConstants.status],

@@ -8,5 +8,5 @@ class NetworkConstants {
 
 class EndPoints {
   static final String baseUrl = FlavorConfig.instance.baseURL;
-  static final String apiURL = baseUrl + FlavorConfig.instance.apiURL;
+  static final String login = "$baseUrl/auth/login";
 }

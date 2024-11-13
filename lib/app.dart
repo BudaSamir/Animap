@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/extensions/bloc_helper.dart';
-import '../core/utils/settings/settings_bloc.dart';
+import 'core/extensions/bloc_helper.dart';
 import 'core/services/connectivity_service.dart';
+import 'core/services/route_services/navigation_service.dart';
 import 'core/services/route_services/routing _service.dart';
 import 'core/utils/language/languages_setup/app_localizations_setup.dart';
+import 'core/utils/settings/settings_bloc.dart';
 import 'core/utils/theme/app_themes.dart';
 import 'core/widgets/scaffold/custom_scaffold.dart';
+import 'features/auth/views/screens/login_screens/get_started_screen.dart';
 import 'flavor_config.dart';
 
 class App extends StatelessWidget {
@@ -65,9 +67,10 @@ class AppSettings extends StatelessWidget {
               AppLocalizationsSetup.localeResolutionCallback,
 
           ///======================== Routing Settings =========================
+          navigatorKey: NavigationService.instance.navigatorKey,
           onGenerateRoute: RoutingService.onGenerateRoute,
           // initialRoute: value ? RoutesNames.home : RoutesNames.home,
-          home: const MyHomePage(),
+          home: const GetStartedScreen(),
         );
       },
     );

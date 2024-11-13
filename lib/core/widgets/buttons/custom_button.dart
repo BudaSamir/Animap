@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../utils/constants/app_fonts.dart';
+import '../../utils/constants/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final Function()? onTap;
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
       {super.key,
       required this.onTap,
       required this.title,
-      this.borderRadius = AppFontSizes.s14,
+      this.borderRadius = 8,
       this.color,
       this.borderColor = Colors.transparent,
       this.width,
@@ -31,18 +31,19 @@ class CustomButton extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(borderRadius),
-            border: Border.all(
-              color: borderColor,
-            ),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 10,
-                offset: Offset(0, 7.5),
-              )
-            ]),
+          color: color,
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(
+            color: borderColor,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.shadowColor,
+              blurRadius: 10,
+              offset: Offset(0, 4),
+            )
+          ],
+        ),
         child: Center(child: title),
       ),
     );

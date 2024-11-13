@@ -1,3 +1,5 @@
+import 'package:animap_app/core/extensions/bloc_helper.dart';
+import 'package:animap_app/core/extensions/media_query_helper.dart';
 import 'package:flutter/material.dart';
 
 import '/core/extensions/settings_helper.dart';
@@ -21,13 +23,17 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: context.color.background,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         bottomNavigationBar: bottomNavigationBar,
         appBar: appBar,
         floatingActionButton: floatingActionButton,
+        resizeToAvoidBottomInset: false,
         body: Directionality(
-          textDirection: TextDirection.ltr,
-          child: child,
+          textDirection: context.settingsBloc.langCode == "en"
+              ? TextDirection.ltr
+              : TextDirection.rtl,
+          child: SizedBox(
+              width: context.width, height: context.height, child: child),
         ),
       ),
     );

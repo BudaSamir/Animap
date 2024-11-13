@@ -12,7 +12,7 @@ extension NavigateHelper on BuildContext {
   Future<void> pushNamed(String screen) =>
       NavigationService.instance.pushNamed(screen);
 
-  Future<void> pushReplacementN(String screen) =>
+  Future<void> pushReplacementNamed(String screen) =>
       NavigationService.instance.pushReplacementNamed(screen);
 
   void popUntil() => NavigationService.instance.popUntil();

@@ -1,4 +1,4 @@
-package com.example.animap_app
+package com.animap.organization
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -39,7 +39,6 @@ class NavigationService {
   }
 
   void pop<T extends Object?>([T? result]) {
-    print("POP ${navigatorKey.currentState}");
     return navigatorKey.currentState!.pop<T>(result);
   }
 

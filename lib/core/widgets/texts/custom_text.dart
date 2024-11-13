@@ -1,13 +1,6 @@
-import 'texts.dart';
+import 'package:animap_app/core/utils/constants/app_fonts.dart';
 
-enum TextStyles {
-  basic,
-  bold,
-  semiBold,
-  medium,
-  regular,
-  light,
-}
+import 'texts.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -35,6 +28,7 @@ class CustomText extends StatelessWidget {
         fontWeight: fontWeight,
         fontSize: fontSize,
         letterSpacing: letterSpacing,
+        fontFamily: AppFontConstants.fontFamily,
       ),
     );
   }

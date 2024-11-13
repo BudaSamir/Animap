@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '/core/extensions/settings_helper.dart';
 import '../../utils/constants/app_colors.dart';
@@ -52,11 +53,15 @@ class CustomTextFormField extends StatefulWidget {
 
   bool? enabled;
 
+  bool expands;
+
   bool? enableInteractiveSelection;
 
   TextStyle? hintStyle;
 
   TextStyle? errorStyle;
+
+  TextAlign textAlign;
 
   InputBorder? border;
 
@@ -70,6 +75,8 @@ class CustomTextFormField extends StatefulWidget {
 
   InputBorder? disabledBorder;
 
+  List<TextInputFormatter>? inputFormatters;
+
   CustomTextFormField({
     super.key,
     this.controller,
@@ -81,6 +88,7 @@ class CustomTextFormField extends StatefulWidget {
     this.onFieldSubmitted,
     this.validator,
     this.autofocus = false,
+    this.expands = false,
     this.textInputAction,
     this.keyboardType,
     this.cursorColor,
@@ -93,6 +101,8 @@ class CustomTextFormField extends StatefulWidget {
     this.height,
     this.width,
     this.maxLines,
+    this.inputFormatters,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -118,7 +128,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    BorderRadius borderRadius = BorderRadius.circular(8);
     return TextFormField(
+      expands: widget.expands,
+      textAlign: widget.textAlign,
       controller: widget.controller,
       focusNode: widget.focusNode,
       onTap: widget.onTap,
@@ -137,19 +150,22 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       cursorColor: widget.cursorColor ?? context.color.primaryColor,
       obscureText: widget.obscureText ?? false,
       obscuringCharacter: '*',
+      inputFormatters: widget.inputFormatters,
       style: TextStyle(
-          color: Colors.blueAccent,
+          color: AppColors.primaryColor,
           fontSize: AppFontSizes.s16,
-          fontWeight: AppFontWeights.light),
+          fontWeight: AppFontWeights.regular),
       decoration: InputDecoration(
-        fillColor: _isFocused ? AppColors.white : widget.fillColor,
+        // fillColor: _isFocused ? context.color.background : widget.fillColor,
+        fillColor: widget.fillColor,
         filled: true,
         isDense: false,
         labelText: widget.hintText,
         labelStyle: TextStyle(
-            color: _isFocused ? context.color.primaryColor : AppColors.grey600,
-            fontSize: widget.hintTextFontSize ?? AppFontSizes.s12,
-            fontWeight: AppFontWeights.medium),
+          color: _isFocused ? context.color.primaryColor : AppColors.grey600,
+          fontSize: widget.hintTextFontSize ?? AppFontSizes.s12,
+          fontWeight: AppFontWeights.medium,
+        ),
         // hintText: !_isFocused ? widget.hintText : "",
         // hintStyle: MethodsManager.selectTextStyle(
         //   color: AppColors.grey600,
@@ -162,25 +178,25 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         errorStyle: widget.errorStyle,
         border: widget.border,
         contentPadding: EdgeInsets.symmetric(
-          horizontal: widget.width ?? 0.0,
+          horizontal: widget.width ?? 1.0,
           vertical: widget.height ?? 0.0,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppFontSizes.s14),
+          borderRadius: borderRadius,
           borderSide: BorderSide(
-              color: _isFocused ? Colors.blueAccent : Colors.transparent),
+              color: _isFocused ? AppColors.primaryColor : Colors.transparent),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppFontSizes.s14),
+          borderRadius: borderRadius,
           borderSide: BorderSide(
-              color: _isFocused ? Colors.blueAccent : Colors.transparent),
+              color: _isFocused ? AppColors.primaryColor : Colors.transparent),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppFontSizes.s14),
+          borderRadius: borderRadius,
           borderSide: const BorderSide(color: Colors.redAccent),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppFontSizes.s14),
+          borderRadius: borderRadius,
           borderSide: const BorderSide(color: Colors.red),
         ),
         disabledBorder: widget.disabledBorder,

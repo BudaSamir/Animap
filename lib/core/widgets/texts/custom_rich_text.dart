@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:animap_app/core/utils/constants/app_fonts.dart';
+
 import 'texts.dart';
 
 class CustomRichText extends StatelessWidget {
@@ -33,14 +35,10 @@ class CustomRichText extends StatelessWidget {
           (int index) => TextSpan(
             text: texts[index],
             style: TextStyle(
-              color: textsColors.length == length
-                  ? textsColors[index]
-                  : textsColors[textsColors.length - 1],
-              fontSize: textsFonts.length == length
-                  ? textsFonts[index]
-                  : textsFonts[textsFonts.length - 1],
-              fontWeight: textsFontsWeights?[index],
-            ),
+                color: textsColors[index],
+                fontSize: textsFonts[index],
+                fontWeight: textsFontsWeights?[index],
+                fontFamily: AppFontConstants.fontFamily),
           ),
         ),
       ),

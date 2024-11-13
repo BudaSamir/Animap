@@ -8,6 +8,16 @@ import '../texts/custom_text.dart';
 import 'custom_button.dart';
 
 class MainButton extends StatelessWidget {
+  final void Function()? onTap;
+  final String text;
+  Color? color;
+  double? width;
+  double? height;
+  double fontSize;
+  FontWeight? fontWeight;
+  Color titleColor;
+  AlignmentGeometry alignment;
+
   MainButton({
     required this.onTap,
     required this.text,
@@ -20,15 +30,6 @@ class MainButton extends StatelessWidget {
     this.fontWeight = AppFontWeights.regular,
     this.alignment = Alignment.center,
   });
-  final void Function()? onTap;
-  final String text;
-  Color? color;
-  double? width;
-  double? height;
-  double fontSize;
-  FontWeight? fontWeight;
-  Color titleColor;
-  AlignmentGeometry alignment;
 
   @override
   Widget build(BuildContext context) {
